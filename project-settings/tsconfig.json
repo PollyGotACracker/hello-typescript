@@ -1,0 +1,9 @@
+{
+  // https://www.typescriptlang.org/tsconfig
+  "compilerOptions": {
+    "allowJs": true, // js 파일 허용
+    "checkJs": true, // js 에서 타입 검사 @ts-check
+    "noImplicitAny": true // 타입 명시 강제
+  },
+  "include": ["./src/**/*"]
+}
