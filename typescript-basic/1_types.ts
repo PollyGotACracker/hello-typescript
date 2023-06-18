@@ -51,19 +51,24 @@ let bool: boolean = true;
 // 7. enum
 // numeric enum
 enum Responses {
-  NO,
-  YES,
+  No,
+  Yes,
 }
-const userRes = Responses.NO; // 0
-
+const userRes = Responses.No; // 0
 // string enum
-enum Commends {
-  UP = "UP",
-  DOWN = "DOWN",
-  LERT = "LEFT",
-  RIGHT = "RIGHT",
+enum Commands {
+  Up = "UP",
+  Down = "DOWN",
 }
-const userCmd = Commends.UP; // UP
+const userCmd = Commands.Up; // UP
+// parameter type 이 enum 인 함수에 인수 전달 시 해당 enum 에 정의된 속성만 허용된다.
+function logCommand(command: Commands) {
+  if (command === Commands.Up) console.log("User Command: Up")
+  if (command === Commands.Down) console.log("User Command: Down")
+}
+// 데이터의 item 객체(object) 의 key 를 enum 속성의 value 로 정의한 후,
+// select 또는 update 하는 함수 parameter 에 
+// 전달할 값의 type 과 enum type(key) 을 함께 지정한다.
 
 // 8. any: 어떤 type 이든 할당 가능. 사용 지양
 let any: any = "hi";
