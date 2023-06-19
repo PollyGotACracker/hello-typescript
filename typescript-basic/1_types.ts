@@ -53,8 +53,11 @@ let bool: boolean = true;
 enum Responses {
   No,
   Yes,
-}
+};
 const userRes = Responses.No; // 0
+// Reverse Mapping
+const value = Responses.No; // no
+const key = Responses[value]; // No
 // string enum
 enum Commands {
   Up = "UP",

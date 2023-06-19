@@ -1,20 +1,23 @@
+// 객체 생성 시 요구되는 속성 및 메서드를 정의한다(구현 X).
 interface User {
-    age: number;
-    name: string;
+    // optional property
+    age?: number;
+    // readonly
+    readonly name: string;
   }
   
   // 1. 변수 type 으로 사용
   let john: User = {
     age: 33,
-    name: "john"
+    name: "john",
   };
   
   // 2. 함수의 parameter type 으로 사용
   function getUser(user: User) {
     console.log(user);
   }
-  // 인수에는 interface 의 모든 property(속성) 이 작성되어야 한다.
-  let item = {age: 30, name: "sarah"};
+  // 인수에는 interface 의 optional property 를 제외한 모든 property(속성) 이 작성되어야 한다.
+  let item = { name: "sarah" };
   getUser(item);
   
   // 3. 함수 자체의 type 으로 사용
@@ -36,6 +39,7 @@ interface User {
   // arrAlphabet[0] = 10; // error(string type 이므로)
   
   // dictionary pattern(key : value) 사용
+  // interface 에서 속성을 직접 정의하지 않을 때
   interface StringRegexDictionary {
     [key: string]: RegExp; 
   }
@@ -55,7 +59,7 @@ interface User {
   }
   let sarah: Developer = {
     // 모든 속성이 작성되어야 한다.
-    age: 100,
+    age: 30,
     name: "sarah",  
     language: "ts",
   }
