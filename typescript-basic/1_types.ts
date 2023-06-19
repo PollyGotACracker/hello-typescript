@@ -46,14 +46,14 @@ const obj3: { item: string; count: number } = {
 };
 
 // 6. boolean
-let bool: boolean = true;
+const bool: boolean = true;
 
 // 7. enum
 // numeric enum
 enum Responses {
   No,
   Yes,
-};
+}
 const userRes = Responses.No; // 0
 // Reverse Mapping
 const value = Responses.No; // no
@@ -66,38 +66,14 @@ enum Commands {
 const userCmd = Commands.Up; // UP
 // parameter type 이 enum 인 함수에 인수 전달 시 해당 enum 에 정의된 속성만 허용된다.
 function logCommand(command: Commands) {
-  if (command === Commands.Up) console.log("User Command: Up")
-  if (command === Commands.Down) console.log("User Command: Down")
+  if (command === Commands.Up) console.log("User Command: Up");
+  if (command === Commands.Down) console.log("User Command: Down");
 }
 // 데이터의 item 객체(object) 의 key 를 enum 속성의 value 로 정의한 후,
-// select 또는 update 하는 함수 parameter 에 
+// select 또는 update 하는 함수 parameter 에
 // 전달할 값의 type 과 enum type(key) 을 함께 지정한다.
 
 // 8. any: 어떤 type 이든 할당 가능. 사용 지양
 let any: any = "hi";
 any = 100;
 any = false;
-
-// type inference(타입 추론)
-// type 을 지정하지 않으면 typescript 에서 type 을 추론
-
-const inferNum = 100; // number
-const inferStr = "hi"; // string
-
-// return 값의 type 추론
-function getReturn(a: number) {
-  let b = "hi";
-  return a + b;
-} // function getReturn(a: number): string
-
-// type assertion(타입 단언)
-// 최종적으로 사용할 type 을 지정
-
-let assertA: any;
-assertA = 10;
-assertA = "hi";
-let assertB = assertA as string;
-
-// DOM 접근
-const divElement = document.querySelector("#app") as HTMLDivElement;
-divElement.innerHTML;
