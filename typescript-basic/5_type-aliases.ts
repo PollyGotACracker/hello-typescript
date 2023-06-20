@@ -1,8 +1,8 @@
-// type alias (타입 별칭)
+// type aliases (타입 별칭)
 type Person = {
-    name: string;
-    age: number;
-}
+  name: string;
+  age: number;
+};
 
 // interface
 // interface Person  {
@@ -15,14 +15,14 @@ type Person = {
 // type 확장이 가능한 interface 사용 권장
 
 const james: Person = {
-    name: "james",
-    age: 30,
-}
+  name: "james",
+  age: 30,
+};
 
 type Greeting = string;
 const hello: Greeting = "hello";
 
-type Todo = {id: string; title: string; done: boolean}
+type Todo = { id: string; title: string; done: boolean };
 function addTodo(todo: Todo) {
-    // ...
+  // ...
 }

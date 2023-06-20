@@ -5,11 +5,11 @@ interface Developer {
   name: string;
   role: string;
 }
-interface Person {
+interface Applicant {
   name: string;
   age: number;
 }
-function getInfo(): Developer | Person {
+function getInfo(): Developer | Applicant {
   return { name: "jenny", age: 33, role: "frontend" };
 }
 const jenny = getInfo();
@@ -21,13 +21,13 @@ console.log(jenny.name);
 if ((jenny as Developer).role) {
   const role = (jenny as Developer).role;
   console.log(role);
-} else if ((jenny as Person).age) {
-  const age = (jenny as Person).age;
+} else if ((jenny as Applicant).age) {
+  const age = (jenny as Applicant).age;
   console.log(age);
 }
 
 // type guard 사용
-function isDeveloper(target: Developer | Person): target is Developer {
+function isDeveloper(target: Developer | Applicant): target is Developer {
   // target 이 Developer 일 때 role 이 undefined 가 아닌지 판단
   return (target as Developer).role !== undefined;
 }

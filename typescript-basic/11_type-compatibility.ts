@@ -2,21 +2,31 @@
 // 내부에 동일 member 를 가지고 있을 경우 type 이 호환된다고 추론
 
 // interface, class: property
-interface Developer {
+// class 는 constructor, static member 를 제외하고 property 만을 비교한다.
+interface Pet {
   name: string;
-  skill: string;
+  age: number;
 }
-let developer: Developer;
-const cracker = { name: "Cracker", skill: "react", role: "frontend" };
-developer = cracker;
+class Parrot {
+  name: string;
+  age: number;
+  owner: string;
+}
+let myPet: Pet;
+myPet = new Parrot();
 
-// constructor, static member 를 제외하고 property 만을 비교한다.
-class Staff {
-  name: string;
+const parrot = {
+  name: "Polly",
+  age: 100,
+  owner: "Cracker",
+  species: "lovebird",
+};
+myPet = parrot;
+
+function greetPet(pet: Pet) {
+  console.log("Hello, " + pet.name);
 }
-let staff = new Staff();
-const polly = { name: "Polly", age: 100 };
-staff = polly;
+greetPet(parrot);
 
 // function: parameter
 let funcA = function (a: number) {};

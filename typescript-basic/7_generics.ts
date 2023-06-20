@@ -5,7 +5,7 @@
  * parameter 의 type 만 다른 함수를 단순 분리
  * 유지보수 측면에서 좋지 않음
  */
-https: function allowString(str: string) {
+function allowString(str: string) {
   return str;
 }
 function allowNumber(num: number) {
