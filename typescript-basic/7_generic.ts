@@ -1,8 +1,11 @@
+// generics: type 을 별도의 parameter 로 받아 재사용 가능한 컴포넌트 작성
+// https://www.typescriptlang.org/ko/docs/handbook/2/generics.html#hello-world-of-generics
+
 /**
  * parameter 의 type 만 다른 함수를 단순 분리
  * 유지보수 측면에서 좋지 않음
  */
-function allowString(str: string) {
+https: function allowString(str: string) {
   return str;
 }
 function allowNumber(num: number) {
@@ -23,8 +26,6 @@ function allowStrNum(value: string | number) {
 const a = allowStrNum("a");
 // a.split(" "); // error
 allowStrNum(10);
-
-// generic: type 을 별도의 parameter 로 받는 것
 
 // 함수에 generic 사용
 function useGeneric<T>(value: T): T {
@@ -104,3 +105,15 @@ function getProductsInfo<T extends keyof Product>(key: T): Product[] {
 }
 getProductsInfo("name");
 getProductsInfo("brand");
+
+// Promise 는 구조상 generic 을 통해 type 을 받아야만 한다.
+function fetchItems(): Promise<string[]> {
+  let items: string[] = ["a", "b", "c"];
+  return new Promise(function (resolve) {
+    resolve(items);
+  });
+}
+fetchItems();
+// new Promise((resolve, reject)=>{...}) 호출 => pending
+// -> resolve(result) 실행 => fulfilled
+// -> reject(new Error(...)) 실행 => rejected
