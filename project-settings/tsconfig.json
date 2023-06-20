@@ -3,7 +3,13 @@
   "compilerOptions": {
     "allowJs": true, // js 파일 허용
     "checkJs": true, // js 에서 타입 검사 @ts-check
-    "noImplicitAny": true // 타입 명시 강제
+    "noImplicitAny": true, // 타입 명시 강제
+    "target": "es5", // compile 시 build 디렉터리에 생성되는 버전
+    "lib": ["es2015", "dom", "dom.iterable"], // compile 시 포함되는 library
+    "strict": true,
+    "strictFunctionTypes": true
   },
+
+  "files": ["index.ts"],
   "include": ["./src/**/*"]
 }
