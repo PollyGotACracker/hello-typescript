@@ -1,5 +1,5 @@
 // mapped types
-// 기존에 정의한 type 을 바탕으로 새로운 type 생성(반복문과 유사)
+// 기존에 정의한 type 을 바탕으로 새로운 type 생성(map() 과 유사)
 // https://www.typescriptlang.org/ko/docs/handbook/2/mapped-types.html
 
 // keyof 키워드로 type 을 반복 생성할 수 있다.
@@ -32,6 +32,7 @@ interface Contact {
 }
 // generic 으로 받은 type 내 property 를
 // 초기화 값에 따라 선택적으로 정의한 type
+// utility type 의 Partial 과 동일하다.
 type ContactSubset<T> = {
   [K in keyof T]?: T[K];
 };
@@ -41,7 +42,7 @@ const myContact: ContactSubset<Contact> = {
   phone: "010-2222-2222",
   email: "myemail@email.com",
 };
-// 특정 속성만을 선택적으로 update 할 때의 type
+// 특정 속성만을 선택적으로 update 가능
 type ContactUpdate = {
   [K in keyof Contact]?: Contact[K];
 };

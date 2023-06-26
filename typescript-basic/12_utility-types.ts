@@ -8,10 +8,12 @@ interface Menu {
 }
 
 // Partial<T>: 모든 property 를 선택적으로 만든 type(OR)
-function chooseMenu(menu: Partial<Menu>) {
+// optional property 를 사용한 interface 를 별도로 정의하지 않고,
+// 데이터의 특정 속성만을 선택적으로 update 할 수 있다.
+function modifyMyMenu(menu: Partial<Menu>) {
   return { ...menu };
 }
-chooseMenu({ pizza: "pepperoni", soda: "coke" });
+modifyMyMenu({ pizza: "pepperoni", soda: "coke" });
 
 // Pick<T>: 모든 property 중 지정된 property 로만 구성된 type(AND)
 // 구분자 | 로 property 분리
