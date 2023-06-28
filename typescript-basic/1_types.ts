@@ -56,7 +56,7 @@ enum Responses {
 }
 const userRes = Responses.No; // 0
 // reverse mapping: 숫자형 enum 에서만 가능
-const userResKey = Responses[value]; // No
+const userResKey = Responses[0]; // No
 // string enum
 enum Commands {
   Up = "UP",
