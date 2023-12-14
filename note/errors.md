@@ -43,3 +43,74 @@ This module is declared with using 'export =', and can only be used with a defau
 
 - commonJS 형식으로 구현된 라이브러리일 경우
 - `import \* as ModuleName from "package-name";` 로 import 문 수정
+
+## ts(7053)
+
+```
+Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+No index signature with a parameter of type 'string' was found on type '{}'.
+```
+
+- string key 로 객체에 접근할 경우
+- index signature 사용
+
+```ts
+interface MyObj {
+  category: string;
+  id: number;
+  price: number;
+  title: string;
+}
+
+// index signature
+interface CountData {
+  [key: string]: number;
+}
+
+const myData: MyObj[] = [
+  {
+    category: "clothing",
+    id: 1,
+    price: 100,
+    title: "Shirts",
+  },
+  {
+    category: "jewelery",
+    id: 2,
+    price: 500,
+    title: "Bracelet",
+  },
+  {
+    category: "clothing",
+    id: 3,
+    price: 100,
+    title: "Jacket",
+  },
+];
+
+const setCountDataA = (data: MyObj[]): CountData => {
+  const arr: CountData = {};
+  for (let item of data) {
+    arr[item.category] ??= 0;
+    arr[item.category] += 1;
+  }
+  return arr;
+};
+
+const setCountDataB = (data: MyObj[]): CountData => {
+  return data.reduce((acc: CountData, cur) => {
+    acc[cur.category] ??= 0;
+    acc[cur.category] += 1;
+    return acc;
+  }, {});
+};
+```
+
+## ts(17008), ts(2304)
+
+```
+JSX element 'T' has no corresponding closing tag.
+Cannot find name 'T'.
+```
+
+- `<T>`를 JSX 태그로 해석하므로 `<T, >` 로 수정

@@ -4,16 +4,33 @@ import { Product } from "./types";
 
 const App = () => {
   const [products, setProducts] = useState<Product[] | []>([]);
+  const [categoryCount, setCategoryCount] = useState<{ string: number } | {}>(
+    {}
+  );
 
   useEffect(() => {
     (async () => {
       const { data } = await getAllProducts(10);
       setProducts(data);
+      setCategoryCount(setCategoryCountNumber(data));
     })();
   }, []);
 
+  const setCategoryCountNumber = (data: Product[]) => {
+    return data.reduce((acc: { [key: string]: number }, cur) => {
+      acc[cur.category] ??= 0;
+      acc[cur.category] += 1;
+      return acc;
+    }, {});
+  };
+
   return (
     <>
+      {Object.entries(categoryCount).map(([key, value]) => (
+        <p key={key}>
+          {key}: {value}
+        </p>
+      ))}
       {products.map((item) => {
         return (
           <div key={item.id}>
