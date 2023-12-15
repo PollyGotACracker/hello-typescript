@@ -12,3 +12,8 @@ interface Rating {
   rate: number;
   count: number;
 }
+
+export enum Sort {
+  Desc = "desc",
+  Asc = "asc",
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllProducts } from "./services";
-import { Product } from "./types";
+import { Product, Sort } from "./types";
 
 const App = () => {
   const [products, setProducts] = useState<Product[] | []>([]);
@@ -10,7 +10,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await getAllProducts(10);
+      const { data } = await getAllProducts(20, Sort.Desc);
       setProducts(data);
       setCategoryCount(setCategoryCountNumber(data));
     })();
