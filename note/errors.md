@@ -114,3 +114,17 @@ Cannot find name 'T'.
 ```
 
 - `<T>`를 JSX 태그로 해석하므로 `<T, >` 로 수정
+
+## ts(2339)
+
+```
+Property 'propA' does not exist on type 'MyObj'.
+Property 'propA' does not exist on type 'MyObjTypeB'.
+```
+
+- 프로퍼티가 다른 여러 객체가 한 배열 안에 있어 `type MyObj = MyObjTypeA | MyObjTypeB` 으로 작성한 상태에서,  
+  `MyObjTypeA` 에만 존재하는 특정 프로퍼티 값을 확인해야 할 경우 발생
+- `in` 연산자: 속성이 해당 객체에 존재하면 `true` 반환
+- 만약 `Array.map()` 을 사용하여 `routerData` 배열을 `router` 객체의 `isAdminPage` 키의 값을 확인하여  
+  JSX element 프로퍼티를 작성할 경우...  
+  `isAdminPage={"isAdminPage" in router && router.isAdminPage}`
