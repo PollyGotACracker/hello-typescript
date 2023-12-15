@@ -128,3 +128,17 @@ Property 'propA' does not exist on type 'MyObjTypeB'.
 - 만약 `Array.map()` 을 사용하여 `routerData` 배열을 `router` 객체의 `isAdminPage` 키의 값을 확인하여  
   JSX element 프로퍼티를 작성할 경우...  
   `isAdminPage={"isAdminPage" in router && router.isAdminPage}`
+
+## ts(2769)
+
+```
+No overload matches this call.
+// ...
+Type '(...) => ...' is not assignable to type '...'.
+```
+
+- 메서드에 정의되어 있는 콜백 type 과 콜백으로 넘겨주려는 함수의 type 이 서로 일치하지 않는 경우
+- 함수의 overload 는 여러 개의 함수를 같은 이름으로 정의하고 매개변수, return 타입 등을 달리하여 여러 동작을 수행하는 것.  
+  즉 해당 함수의 선언된 오버로드 중 어떤 것도 현재 호출에 맞지 않는다는 의미
+- 해당 메서드의 spec 을 확인한 후, 인자인 함수의 type 을 수정
+- 현재 tsconfig.json 의 `"compilerOptions"` 에서 `"strict"` 또는 `"strictFunctionTypes"` 가 `true` 로 설정되어 있음
